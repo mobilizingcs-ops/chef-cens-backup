@@ -1,19 +1,16 @@
 #
 # Cookbook Name:: cens-backup
-# Recipe:: jenkins
+# Recipe:: ldap
 #
 include_recipe "cens-backup::default"
 
-backup_model :jenkins do
-  description "Back up jenkins config"
+backup_model :ldap do
+  description "Back up openldap db"
 
   definition <<-DEF
 
-    archive :jenkins_dirs do |archive|
-      archive.add '/var/lib/jenkins/'
+    database OpenLDAP do |db|
     end
-
-    compress_with Gzip
 
     store_with Local do |local|
       local.path = '/mnt/backups/'
@@ -23,6 +20,6 @@ backup_model :jenkins do
 
   schedule({
     :minute => 0,
-    :hour   => 1
+    :hour   => 0
   })
 end

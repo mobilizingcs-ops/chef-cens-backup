@@ -12,7 +12,7 @@ backup_model :ohmage do
     database MySQL do |db|
       db.name = 'ohmage'
       db.username = 'ohmage'
-      db.password = node['ohmage']['db']['password']
+      db.password = '#{node['ohmage']['db']['password']}'
       db.host = 'localhost'
       db.port = '3306'
       db.additional_options = ["--quick", "--single-transaction"]
