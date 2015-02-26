@@ -24,5 +24,8 @@ backup_model :jenkins do
   schedule({
     :minute => 0,
     :hour   => 1
+  }),
+  cron_options({
+    :path => "/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
   })
 end

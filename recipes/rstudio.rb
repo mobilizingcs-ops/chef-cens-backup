@@ -32,6 +32,9 @@ backup_model :rstudio do
   schedule({
     :minute => 0,
     :hour   => 2
+  }),
+  cron_options({
+    :path => "/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
   })
 end
 
