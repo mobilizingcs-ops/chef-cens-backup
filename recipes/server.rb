@@ -27,7 +27,7 @@ end
 zfs "tank/backups" do
   compression "on"
   mountpoint "/export/backups"
-  quota "2TB"
+  quota "2T"
 end  
 
 #now the real fun begins.  Let's search on our linux hosts, and loop through making a backup dir for each host
