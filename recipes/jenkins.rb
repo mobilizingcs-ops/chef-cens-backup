@@ -4,6 +4,8 @@
 #
 include_recipe "cens-backup::default"
 
+node.set['backup']['addl_flags']   = '--tmp-path=/mnt/backups/tmp'
+
 backup_model :jenkins do
   description "Back up jenkins config"
 

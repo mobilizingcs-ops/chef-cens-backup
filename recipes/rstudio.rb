@@ -4,6 +4,8 @@
 #
 include_recipe "cens-backup::default"
 
+node.set['backup']['addl_flags']   = '--tmp-path=/mnt/backups/tmp'
+
 backup_model :rstudio do
   description "Back up config files and home dir"
 
