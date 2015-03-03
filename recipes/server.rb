@@ -77,17 +77,12 @@ end
 
 hosts = search(:node, 'os:linux AND role:guest')
 hosts.sort!{|x, y| x[:fqdn] <=> y[:fqdn]}
-
-#remove hosts we know don't need data backups
-%w(analysis02.ohmage.org anvil.ohmage.org dev.opencpu.org dev1.opencpu.org dev2.opencpu.org ocpu.ohmage.org).each do |no_backup|
- hosts.delete(no_backup)
-end
 hosts.each do |cur_host|
   zfs "tank/backups/#{cur_host['fqdn']}" do
     mountpoint "/export/backups/#{cur_host['fqdn']}"
   end
 
-  sanoid_syncoid 'sync-#{cur_host['fqdn']}' do
+  sanoid_syncoid "sync-#{cur_host['fqdn']}" do
    user "root"
    server "cavil.ohmage.org"
    dataset "tank/backups/#{cur_host['fqdn']}"
