@@ -2,10 +2,10 @@
 # Cookbook Name:: cens-backup
 # Recipe:: generic_webserver
 #
-include_recipe "cens-backup::default"
+include_recipe 'cens-backup::default'
 
 backup_model :generic_webserver do
-  description "Back up database, web dirs and nginx config files"
+  description 'Back up database, web dirs and nginx config files'
 
   definition <<-DEF
 
@@ -34,11 +34,11 @@ backup_model :generic_webserver do
     end
   DEF
 
-  schedule({
-    :minute => 0,
-    :hour   => 0
-  })
-  cron_options({
-    :path => "/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
-  })
+  schedule(
+    minute: 0,
+    hour: 0
+  )
+  cron_options(
+    path: '/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'
+  )
 end

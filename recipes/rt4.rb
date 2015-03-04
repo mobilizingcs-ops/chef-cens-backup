@@ -2,11 +2,11 @@
 # Cookbook Name:: cens-backup
 # Recipe:: rt4
 #
-#assumes rt4 installed from debian packages
-include_recipe "cens-backup::default"
+# assumes rt4 installed from debian packages
+include_recipe 'cens-backup::default'
 
 backup_model :rt4 do
-  description "Back up database, config files, and source for rt4"
+  description 'Back up database, config files, and source for rt4'
 
   definition <<-DEF
 
@@ -39,11 +39,11 @@ backup_model :rt4 do
     end
   DEF
 
-  schedule({
-    :minute => 0,
-    :hour   => 1
-  })
-  cron_options({
-    :path => "/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
-  })
+  schedule(
+    minute: 0,
+    hour: 1
+  )
+  cron_options(
+    path: '/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'
+  )
 end

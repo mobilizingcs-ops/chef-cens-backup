@@ -2,12 +2,12 @@
 # Cookbook Name:: cens-backup
 # Recipe:: rstudio
 #
-include_recipe "cens-backup::default"
+include_recipe 'cens-backup::default'
 
 node.set['backup']['addl_flags']   = '--tmp-path=/mnt/backups/tmp'
 
 backup_model :rstudio do
-  description "Back up config files and home dir"
+  description 'Back up config files and home dir'
 
   definition <<-DEF
 
@@ -31,13 +31,11 @@ backup_model :rstudio do
     end
   DEF
 
-  schedule({
-    :minute => 0,
-    :hour   => 2
-  })
-  cron_options({
-    :path => "/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
-  })
+  schedule(
+    minute: 0,
+    hour: 2
+  )
+  cron_options(
+    path: '/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'
+  )
 end
-
-

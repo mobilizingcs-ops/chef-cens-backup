@@ -2,10 +2,10 @@
 # Cookbook Name:: cens-backup
 # Recipe:: ohmage
 #
-include_recipe "cens-backup::default"
+include_recipe 'cens-backup::default'
 
 backup_model :ohmage do
-  description "Back up ohmage database and data dirs"
+  description 'Back up ohmage database and data dirs'
 
   definition <<-DEF
 
@@ -15,7 +15,7 @@ backup_model :ohmage do
       db.password = '#{node['ohmage']['db']['password']}'
       db.host = 'localhost'
       db.port = '3306'
-      db.additional_options = ["--quick", "--single-transaction"]
+      db.additional_options = ['--quick', '--single-transaction']
     end
 
     archive :data_dirs do |archive|
@@ -30,11 +30,11 @@ backup_model :ohmage do
     end
   DEF
 
-  schedule({
-    :minute => 0,
-    :hour   => 1
-  })
-  cron_options({
-    :path => "/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
-  })
+  schedule(
+    minute: 0,
+    hour: 1
+  )
+  cron_options(
+    path: '/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'
+  )
 end

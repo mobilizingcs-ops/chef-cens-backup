@@ -2,10 +2,10 @@
 # Cookbook Name:: cens-backup
 # Recipe:: ldap
 #
-include_recipe "cens-backup::default"
+include_recipe 'cens-backup::default'
 
 backup_model :ldap do
-  description "Back up openldap db"
+  description 'Back up openldap db'
 
   definition <<-DEF
 
@@ -18,11 +18,11 @@ backup_model :ldap do
     end
   DEF
 
-  schedule({
-    :minute => 0,
-    :hour   => 0
-  })
-  cron_options({
-    :path => "/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
-  })
+  schedule(
+    minute: 0,
+    hour: 0
+  )
+  cron_options(
+    path: '/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'
+  )
 end

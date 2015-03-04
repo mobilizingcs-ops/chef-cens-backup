@@ -2,12 +2,12 @@
 # Cookbook Name:: cens-backup
 # Recipe:: jenkins
 #
-include_recipe "cens-backup::default"
+include_recipe 'cens-backup::default'
 
-node.set['backup']['addl_flags']   = '--tmp-path=/mnt/backups/tmp'
+node.set['backup']['addl_flags'] = '--tmp-path=/mnt/backups/tmp'
 
 backup_model :jenkins do
-  description "Back up jenkins config"
+  description 'Back up jenkins config'
 
   definition <<-DEF
 
@@ -23,11 +23,11 @@ backup_model :jenkins do
     end
   DEF
 
-  schedule({
-    :minute => 0,
-    :hour   => 1
-  })
-  cron_options({
-    :path => "/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
-  })
+  schedule(
+    minute: 0,
+    hour: 1
+  )
+  cron_options(
+    path: '/opt/chef/embedded/bin/:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'
+  )
 end
