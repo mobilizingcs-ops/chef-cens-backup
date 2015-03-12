@@ -52,6 +52,12 @@ sanoid_dataset 'tank/backups' do
   use_template 'backups'
 end
 
+zfs 'tank/apps' do
+  compression 'on'
+  mountpoint '/export/apps'
+  quota '50G'
+end
+
 # sanoid templates to use for snapshots
 sanoid_template 'backups' do
   daily 7
