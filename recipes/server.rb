@@ -58,6 +58,24 @@ zfs 'tank/apps' do
   quota '50G'
 end
 
+zfs 'tank/owncloud' do
+  compression 'on'
+  mountpoint '/export/owncloud'
+  quota '100G'
+end
+
+sanoid_dataset 'tank/owncloud' do
+  use_template 'home'
+end
+
+sanoid_syncoid 'sync-ownloud' do
+  user 'root'
+  server 'cavil.ohmage.org'
+  dataset 'tank/owncloud'
+  target 'tank/owncloud'
+  cron '0 2 * * *'
+end
+
 # sanoid templates to use for snapshots
 sanoid_template 'backups' do
   daily 7

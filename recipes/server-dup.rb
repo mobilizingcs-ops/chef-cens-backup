@@ -5,8 +5,12 @@
 
 include_recipe 'sanoid'
 
-# mimic tank/home and tank/backups from starbuck. we'll use syncoid to get them here.
+# mimic tank/home, tank/owncloud and tank/backups from starbuck. we'll use syncoid to get them here.
 zfs 'tank/home' do
+  compression 'on'
+end
+
+zfs 'tank/owncloud' do
   compression 'on'
 end
 
