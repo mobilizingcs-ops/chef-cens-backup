@@ -5,6 +5,14 @@
 
 include_recipe 'sanoid'
 
+# for cleanliness, scrub daily :)
+cron "scrub" do
+  minute '0'
+  hour '21'
+  user "getchef"
+  command "zpool scrub tank"
+end
+
 # mimic tank/home, tank/owncloud and tank/backups from starbuck. we'll use syncoid to get them here.
 zfs 'tank/home' do
   compression 'on'

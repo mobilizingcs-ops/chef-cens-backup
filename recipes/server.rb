@@ -4,6 +4,14 @@
 #
 include_recipe 'sanoid'
 
+# for cleanliness, scrub daily :)
+cron "scrub" do
+  minute '0'
+  hour '21'
+  user "getchef"
+  command "zpool scrub tank"
+end
+
 service 'mountd' do
   action :nothing
   supports reload: true
