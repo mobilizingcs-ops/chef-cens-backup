@@ -8,7 +8,6 @@ include_recipe 'sanoid'
 cron "scrub" do
   minute '0'
   hour '21'
-  user "getchef"
   command "zpool scrub tank"
 end
 
