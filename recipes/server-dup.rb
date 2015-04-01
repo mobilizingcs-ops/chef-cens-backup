@@ -17,6 +17,10 @@ zfs 'tank/home' do
   compression 'on'
 end
 
+zfs 'tank/rstudio-home' do
+  compression 'on'
+end
+
 zfs 'tank/owncloud' do
   compression 'on'
 end
