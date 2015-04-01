@@ -11,10 +11,6 @@ backup_model :rstudio do
 
   definition <<-DEF
 
-    archive :home_dir do |archive|
-      archive.add '/home/'
-    end
-
     archive :libraries do |archive|
       archive.add '/usr/local/lib/R/site-library/'
     end
