@@ -6,6 +6,7 @@
 /export/home    -maproot=root 131.179.144.78 131.179.144.86 131.179.144.87
 /export/apps    -maproot=root 131.179.144.108 131.179.144.86 131.179.144.87
 /export/owncloud -maproot=root 131.179.144.108
+/export/rstudio-home -maproot=root 131.179.144.35
 <% @linux_hosts.each do |linux_host| -%>
 /export/backups/<%= linux_host['fqdn'] -%> -maproot=root <%= linux_host['ipaddress'] %>
 <% end -%>

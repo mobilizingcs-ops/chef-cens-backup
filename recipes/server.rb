@@ -36,6 +36,23 @@ sanoid_syncoid 'sync-home' do
   cron '0 2 * * *'
 end
 
+zfs 'tank/rstudio-home' do
+  compression 'on'
+  mountpoint '/export/rstudio-home'
+end
+
+sanoid_dataset 'tank/rstudio-home' do
+  use_template 'home'
+end
+
+sandoid_syncoid 'sync-rstudio-home' do
+  user 'root'
+  server 'cavil.ohmage.org'
+  dataset 'tank/rstudio-home'
+  target 'tank/rstudio-home'
+  cron '0 2 * * *'
+end
+
 zfs 'tank/archive' do
   compression 'on'
 end
