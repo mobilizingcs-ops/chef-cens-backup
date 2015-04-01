@@ -45,7 +45,7 @@ sanoid_dataset 'tank/rstudio-home' do
   use_template 'home'
 end
 
-sandoid_syncoid 'sync-rstudio-home' do
+sanoid_syncoid 'sync-rstudio-home' do
   user 'root'
   server 'cavil.ohmage.org'
   dataset 'tank/rstudio-home'
