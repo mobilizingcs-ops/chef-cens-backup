@@ -20,7 +20,7 @@ backup_model :generic_webserver do
       db.password = '#{node['mysql']['server_root_password']}'
       db.host = 'localhost'
       db.port = '3306'
-      db.additional_options = ["--quick", "--single-transaction"]
+      db.additional_options = ["--quick", "--single-transaction", "--events"]
     end
 
     archive :web_dir do |archive|
