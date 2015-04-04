@@ -10,6 +10,8 @@ chef_gem 'chef-vault'
 require 'chef-vault'
 ohmage_db_password = ChefVault::Item.load('passwords', 'ohmage_db')
 fqdn = node['fqdn']
+slack = ChefVault::Item.load('slack', 'backup-gem')
+webhook_url = slack['webhook']
 
 backup_model :ohmage do
   description 'Back up ohmage database and data dirs'
@@ -34,6 +36,16 @@ backup_model :ohmage do
     store_with Local do |local|
       local.path = '/mnt/backups/'
       local.keep = 1
+    end
+
+    notify_by Slack do |slack|
+      slack.on_success = false
+      slack.on_warning = true
+      slack.on_failure = true
+      slack.webhook_url = '#{webhook_url}'
+      slack.channel = '#cens'
+      slack.username = 'backup-gem'
+      slack.icon_emoji = ':whale:'
     end
   DEF
 

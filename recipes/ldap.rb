@@ -24,11 +24,11 @@ backup_model :ldap do
     end
 
     notify_by Slack do |slack|
-      slack.on_success = true
+      slack.on_success = false
       slack.on_warning = true
       slack.on_failure = true
       slack.webhook_url = '#{webhook_url}'
-      slack.channel = 'cens'
+      slack.channel = '#cens'
       slack.username = 'backup-gem'
       slack.icon_emoji = ':whale:'
     end

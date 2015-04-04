@@ -3,6 +3,11 @@
 # Recipe:: rstudio
 #
 include_recipe 'cens-backup::default'
+# require chef-vault
+chef_gem 'chef-vault'
+require 'chef-vault'
+slack = ChefVault::Item.load('slack', 'backup-gem')
+webhook_url = slack['webhook']
 
 node.set['backup']['addl_flags']   = '--tmp-path=/mnt/backups/tmp'
 
@@ -24,6 +29,16 @@ backup_model :rstudio do
     store_with Local do |local|
       local.path = '/mnt/backups/'
       local.keep = 1
+    end
+
+    notify_by Slack do |slack|
+      slack.on_success = false
+      slack.on_warning = true
+      slack.on_failure = true
+      slack.webhook_url = '#{webhook_url}'
+      slack.channel = '#cens'
+      slack.username = 'backup-gem'
+      slack.icon_emoji = ':whale:'
     end
   DEF
 
