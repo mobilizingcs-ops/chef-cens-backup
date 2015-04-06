@@ -86,7 +86,7 @@
 #     s3.secret_access_key = "my_secret_access_key"
 #   end
 #
-notify_by Slack do |slack|
+Notifier::Slack.defaults do |slack|
   slack.on_success = false
   slack.on_warning = true
   slack.on_failure = true

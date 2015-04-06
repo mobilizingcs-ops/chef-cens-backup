@@ -32,6 +32,8 @@ backup_model :generic_webserver do
       local.path = '/mnt/backups/'
       local.keep = 1
     end
+
+    notify_by Slack
   DEF
 
   schedule(

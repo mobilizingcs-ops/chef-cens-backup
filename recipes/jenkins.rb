@@ -21,6 +21,8 @@ backup_model :jenkins do
       local.path = '/mnt/backups/'
       local.keep = 30
     end
+
+    notify_by Slack
   DEF
 
   schedule(

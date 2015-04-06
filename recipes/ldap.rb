@@ -16,6 +16,8 @@ backup_model :ldap do
       local.path = '/mnt/backups/'
       local.keep = 30
     end
+
+    notify_by Slack
   DEF
 
   schedule(

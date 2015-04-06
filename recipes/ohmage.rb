@@ -35,6 +35,8 @@ backup_model :ohmage do
       local.path = '/mnt/backups/'
       local.keep = 1
     end
+    
+    notify_by Slack
   DEF
 
   schedule(
