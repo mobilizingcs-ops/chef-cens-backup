@@ -22,10 +22,6 @@ backup_model :generic_webserver do
       archive.add '/var/www/'
     end
 
-    archive :config_dir do |archive|
-      archive.add '/etc/nginx/'
-    end
-
     compress_with Gzip
 
     store_with Local do |local|
