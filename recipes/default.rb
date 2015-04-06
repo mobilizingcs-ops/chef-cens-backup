@@ -8,9 +8,25 @@
   package pkg
 end
 
+# require chef-vault
+chef_gem 'chef-vault'
+require 'chef-vault'
+slack = ChefVault::Item.load('slack', 'backup-gem')
+webhook_url = slack['webhook']
+
 node.set['backup']['version'] = '4.1.7'
 include_recipe 'build-essential'
 include_recipe 'backup'
+begin
+  # Replace global config file from backup cookbook with our own.
+  r = resources(:template => "Backup config file")
+  r.cookbook "cens-backup"
+  r.variables(
+      webhook_url: webhook_url
+  	)
+rescue Chef::Exceptions::ResourceNotFound
+  Chef::Log.warn "could not find template to override!"
+end
 
 directory '/mnt/backups' do
   owner 'root'
