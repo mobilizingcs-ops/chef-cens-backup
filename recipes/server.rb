@@ -131,6 +131,10 @@ else
       mountpoint "/export/backups/#{cur_host['fqdn']}"
     end
 
+    sanoid_dataset "tank/backups/#{cur_host['fqdn']}" do
+      use_template 'backups'
+    end
+
     sanoid_syncoid "sync-#{cur_host['fqdn']}" do
       user 'root'
       server 'cavil.ohmage.org'
