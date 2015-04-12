@@ -11,12 +11,12 @@ backup_model :alerts do
 
     archive :graphite_data do |archive|
       archive.add '/opt/graphite/storage/'
-      archive.tar_options '--warning=no-file-removed'
+      archive.tar_options '--warning=no-file-changed --warning=no-file-removed'
     end
 
     archive :elasticsearch_data do |archive|
       archive.add '/usr/local/var/data/elasticsearch/'
-      archive.tar_options '--warning=no-file-removed'
+      archive.tar_options '--warning=no-file-changed --warning=no-file-removed'
     end
 
     compress_with Gzip
