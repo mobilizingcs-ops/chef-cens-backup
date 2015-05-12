@@ -41,7 +41,8 @@ backup_model :ohmage_aws do
     store_with S3 do |s3|
       s3.access_key_id = '#{aws_creds["key"]}'
       s3.secret_access_key = '#{aws_creds["secret"]}'
-      s3.bucket = 'mobilize-ohmage-lausd-backup'
+      s3.bucket = 'mobilize-ohmage-backup'
+      s3.path = '#{node["fqdn"]}'
       s3.chunk_size = 50
       s3.keep = 1
 
