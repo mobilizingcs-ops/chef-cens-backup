@@ -34,7 +34,7 @@ backup_model :ohmage_aws do
 
     encrypt_with OpenSSL do |encryption|
       encryption.password = '#{aws_creds["encryption_key"]}'
-      encryption.base64   = true
+      encryption.base64   = false
       encryption.salt     = true
     end
 
@@ -45,6 +45,7 @@ backup_model :ohmage_aws do
       s3.path = '#{node["fqdn"]}'
       s3.chunk_size = 50
       s3.keep = 1
+    end
 
     store_with Local do |local|
       local.path = '/mnt/backups/'
