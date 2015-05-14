@@ -19,7 +19,7 @@ backup_model :jenkins do
 
     store_with Local do |local|
       local.path = '/mnt/backups/'
-      local.keep = 2
+      local.keep = 1
     end
 
     notify_by Slack

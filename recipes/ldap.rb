@@ -14,7 +14,7 @@ backup_model :ldap do
 
     store_with Local do |local|
       local.path = '/mnt/backups/'
-      local.keep = 30
+      local.keep = 1
     end
 
     notify_by Slack
