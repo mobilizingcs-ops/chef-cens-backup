@@ -4,7 +4,6 @@
 #
 include_recipe 'cens-backup::default'
 
-node.set['backup']['addl_flags'] = '--tmp-path=/mnt/backups/tmp' if node['fqdn'] == 'lausd.mobilizingcs.org'
 # require chef-vault
 chef_gem 'chef-vault'
 require 'chef-vault'

@@ -36,7 +36,9 @@ backup_model :ohmage do
       local.keep = 1
     end
     
-    notify_by Slack
+    notify_by Slack do |slack|
+      slack.on_warning = false
+    end
   DEF
 
   schedule(
