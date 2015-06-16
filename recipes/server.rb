@@ -103,7 +103,6 @@ end
 # sanoid templates to use for snapshots
 sanoid_template 'backups' do
   daily 7
-  weekly 4
   monthly 12
   autosnap 'yes'
   autoprune 'yes'
