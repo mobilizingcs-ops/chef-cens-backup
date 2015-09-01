@@ -9,6 +9,7 @@ node.set['backup']['addl_flags'] = '--tmp-path=/tank/tmp'
 chef_gem 'chef-vault'
 require 'chef-vault'
 fqdn = node['fqdn']
+aws_creds = ChefVault::Item.load('aws', 'backup')
 
 backup_model :dataset_rstudiohome do
   description 'Back up rstudiohome'
