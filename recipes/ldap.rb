@@ -7,7 +7,6 @@ include_recipe 'cens-backup::default'
 # require chef-vault
 chef_gem 'chef-vault'
 require 'chef-vault'
-ohmage_db_password = ChefVault::Item.load('passwords', 'ohmage_db')
 fqdn = node['fqdn']
 aws_creds = ChefVault::Item.load('aws', 'backup')
 
