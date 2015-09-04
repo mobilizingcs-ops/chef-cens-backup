@@ -32,13 +32,13 @@ else
   end
   
   mount '/mnt/backups' do
-    device "starbuck.ohmage.org:/export/backups/#{node['fqdn']}"
+    device "cavil.ohmage.org:/export/backups/#{node['fqdn']}"
     fstype 'nfs'
     options '_netdev,defaults,acl'
     action [:umount, :disable]
   end
   mount '/mnt/backups' do
-    device "cavil.ohmage.org:/export/backups/#{node['fqdn']}"
+    device "starbuck.ohmage.org:/export/backups/#{node['fqdn']}"
     fstype 'nfs'
     options '_netdev,defaults,acl'
     action [:mount, :enable]
