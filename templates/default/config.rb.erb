@@ -96,6 +96,12 @@ Notifier::Slack.defaults do |slack|
   slack.icon_emoji = ':whale:'
 end
 
+# needed to back up on S3 with only embedded chef installed.
+# see: https://github.com/excon/excon/issues/239
+# WARNING: this will only work on linuxes, but the backup gem
+# is broken for now on freebsd because of the cron impl.
+ENV['SSL_CERT_DIR'] = '/usr/lib/ssl/certs'
+
 ##
 # Preconfigured Models
 #
