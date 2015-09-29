@@ -3,6 +3,7 @@
 # Recipe:: zfs_datasets
 #
 include_recipe 'cens-backup::default'
+include_recipe 'cron::default' # https://github.com/chef-cookbooks/cron/commit/5ec9b142ea2f19ade0f94d10284096af1f0e4fc7
 
 node.set['backup']['addl_flags'] = '--tmp-path=/tank/tmp'
 # require chef-vault
