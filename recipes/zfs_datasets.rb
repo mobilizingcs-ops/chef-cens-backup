@@ -21,8 +21,6 @@ backup_model :dataset_rstudiohome do
       archive.add '/export/rstudio-home'
     end
 
-    compress_with Gzip
-
     store_with S3 do |s3|
       s3.access_key_id = '#{aws_creds["key"]}'
       s3.secret_access_key = '#{aws_creds["secret"]}'
