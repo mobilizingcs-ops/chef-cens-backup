@@ -78,7 +78,7 @@ backup_model :dataset_owncloud do
 
   schedule(
     minute: 0,
-    hour: 3,
+    hour: 5,
     weekday: 0
   )
   cron_options(
