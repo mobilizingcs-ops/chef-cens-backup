@@ -17,6 +17,10 @@ backup_model :dataset_rstudiohome do
 
   definition <<-DEF
 
+    before do
+      `export LANG=en_US.UTF-8; export LANGUAGE=en_US.UTF-8; export LC_ALL=en_US.UTF-8`
+    end
+
     archive :data_dirs do |archive|
       archive.add '/export/rstudio-home'
     end
@@ -49,6 +53,10 @@ backup_model :dataset_owncloud do
   description 'Back up owncloud'
 
   definition <<-DEF
+
+    before do
+      `export LANG=en_US.UTF-8; export LANGUAGE=en_US.UTF-8; export LC_ALL=en_US.UTF-8`
+    end
 
     archive :data_dirs do |archive|
       archive.add '/export/owncloud'
