@@ -85,7 +85,7 @@ end
 zfs 'tank/owncloud' do
   compression 'on'
   mountpoint '/export/owncloud'
-  quota '100G'
+  quota '250G'
 end
 
 sanoid_dataset 'tank/owncloud' do
